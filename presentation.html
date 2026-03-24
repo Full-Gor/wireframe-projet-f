@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>MossAir - Pr&eacute;sentation Projet</title>
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Lato:wght@300;400;700&display=swap');
+
+ body {
+ font-family: 'Lato', sans-serif;
+ background: #1a1a2e;
+ color: #fff;
+ overflow: hidden;
+ height: 100vh;
+ width: 100vw;
+ }
+
+ .slide {
+ display: none;
+ width: 100vw;
+ height: 100vh;
+ padding: 60px 80px;
+ position: absolute;
+ top: 0; left: 0;
+ opacity: 0;
+ transition: opacity 0.5s ease;
+ }
+ .slide.active {
+ display: flex;
+ flex-direction: column;
+ opacity: 1;
+ }
+
+ /* Backgrounds */
+ .bg-green { background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #6b8e7a 100%); }
+ .bg-dark { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+ .bg-forest { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%); }
+ .bg-moss { background: linear-gradient(135deg, #354f25 0%, #4a7c3f 50%, #6b9b37 100%); }
+ .bg-earth { background: linear-gradient(135deg, #3d2c1e 0%, #5c4033 50%, #7a6955 100%); }
+ .bg-tech { background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #2c3e50 100%); }
+ .bg-white { background: #f5f5f0; color: #333; }
+
+ h1 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 3.2em;
+ font-weight: 800;
+ margin-bottom: 20px;
+ line-height: 1.1;
+ }
+ h2 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 2.2em;
+ font-weight: 700;
+ margin-bottom: 15px;
+ }
+ h3 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1.5em;
+ font-weight: 600;
+ margin-bottom: 10px;
+ color: #90e060;
+ }
+ p, li {
+ font-size: 1.3em;
+ line-height: 1.6;
+ }
+ ul { list-style: none; padding-left: 0; }
+ ul li::before {
+ content: "\2022";
+ color: #90e060;
+ font-weight: bold;
+ display: inline-block;
+ width: 1em;
+ margin-left: -0em;
+ }
+
+ .highlight {
+ color: #90e060;
+ font-weight: 700;
+ }
+ .tag {
+ display: inline-block;
+ background: rgba(144, 224, 96, 0.2);
+ border: 1px solid #90e060;
+ border-radius: 20px;
+ padding: 4px 16px;
+ font-size: 0.9em;
+ margin: 4px;
+ }
+ .badge {
+ display: inline-block;
+ background: #e74c3c;
+ border-radius: 6px;
+ padding: 3px 12px;
+ font-size: 0.85em;
+ font-weight: 700;
+ margin: 3px;
+ }
+ .badge.green { background: #27ae60; }
+ .badge.blue { background: #2980b9; }
+ .badge.orange { background: #e67e22; }
+
+ table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 15px 0;
+ }
+ th {
+ background: rgba(45, 106, 79, 0.8);
+ padding: 12px 20px;
+ text-align: left;
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1.1em;
+ }
+ td {
+ padding: 10px 20px;
+ border-bottom: 1px solid rgba(255,255,255,0.1);
+ font-size: 1.1em;
+ }
+ tr:nth-child(even) { background: rgba(255,255,255,0.05); }
+
+ .two-cols {
+ display: flex;
+ gap: 50px;
+ flex: 1;
+ align-items: flex-start;
+ }
+ .two-cols > div { flex: 1; }
+
+ .code-block {
+ background: #0d1117;
+ border-radius: 10px;
+ padding: 20px;
+ font-family: 'Fira Code', 'Courier New', monospace;
+ font-size: 0.85em;
+ line-height: 1.5;
+ overflow: hidden;
+ border: 1px solid #30363d;
+ }
+ .code-block .keyword { color: #ff7b72; }
+ .code-block .string { color: #a5d6ff; }
+ .code-block .comment { color: #8b949e; }
+ .code-block .func { color: #d2a8ff; }
+ .code-block .var { color: #ffa657; }
+
+ .tree {
+ font-family: 'Fira Code', 'Courier New', monospace;
+ font-size: 1em;
+ line-height: 1.8;
+ background: rgba(0,0,0,0.3);
+ padding: 20px;
+ border-radius: 10px;
+ }
+
+ .icon-big {
+ font-size: 4em;
+ margin-bottom: 10px;
+ }
+
+ .progress-bar {
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ height: 4px;
+ background: #90e060;
+ transition: width 0.3s ease;
+ z-index: 100;
+ }
+
+ .slide-number {
+ position: fixed;
+ bottom: 15px;
+ right: 30px;
+ font-family: 'Montserrat', sans-serif;
+ font-size: 0.9em;
+ opacity: 0.6;
+ z-index: 100;
+ }
+
+ .nav-hint {
+ position: fixed;
+ bottom: 15px;
+ left: 30px;
+ font-size: 0.8em;
+ opacity: 0.4;
+ z-index: 100;
+ }
+
+ .flex-center {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ flex: 1;
+ }
+
+ .subtitle {
+ font-size: 1.5em;
+ opacity: 0.8;
+ margin-top: 10px;
+ }
+
+ .divider {
+ width: 80px;
+ height: 4px;
+ background: #90e060;
+ margin: 20px 0;
+ border-radius: 2px;
+ }
+
+ .card {
+ background: rgba(255,255,255,0.08);
+ border-radius: 15px;
+ padding: 25px;
+ margin: 10px 0;
+ border: 1px solid rgba(255,255,255,0.1);
+ }
+
+ .three-cols {
+ display: flex;
+ gap: 25px;
+ flex: 1;
+ }
+ .three-cols > div {
+ flex: 1;
+ background: rgba(255,255,255,0.08);
+ border-radius: 15px;
+ padding: 25px;
+ border: 1px solid rgba(255,255,255,0.1);
+ }
+
+ .flow-diagram {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 15px;
+ margin: 20px 0;
+ }
+ .flow-step {
+ background: rgba(45, 106, 79, 0.6);
+ padding: 15px 25px;
+ border-radius: 10px;
+ text-align: center;
+ font-size: 1em;
+ border: 1px solid rgba(144, 224, 96, 0.3);
+ }
+ .flow-arrow {
+ font-size: 1.5em;
+ color: #90e060;
+ }
+
+ .mcd-table {
+ background: rgba(0,0,0,0.3);
+ border-radius: 10px;
+ padding: 15px;
+ border: 2px solid #90e060;
+ }
+ .mcd-title {
+ background: #2d6a4f;
+ padding: 8px 15px;
+ border-radius: 6px;
+ font-weight: 700;
+ font-family: 'Montserrat', sans-serif;
+ margin-bottom: 10px;
+ text-align: center;
+ }
+ .mcd-field {
+ font-family: monospace;
+ padding: 3px 10px;
+ font-size: 0.95em;
+ }
+ .mcd-pk { color: #e74c3c; font-weight: bold; }
+ .mcd-new { color: #f1c40f; font-weight: bold; }
+
+ .security-item {
+ display: flex;
+ align-items: flex-start;
+ gap: 15px;
+ margin: 12px 0;
+ }
+ .security-icon {
+ font-size: 1.8em;
+ min-width: 45px;
+ text-align: center;
+ }
+ </style>
+</head>
+<body>
+
+<!-- SLIDE 1: Titre -->
+<div class="slide bg-green active" id="slide-1">
+ <div class="flex-center">
+  <h1 style="font-size: 4em;">MossAir</h1>
+ <p class="subtitle">Purificateur d'air naturel r&eacute;volutionnaire</p>
+ <div class="divider" style="margin: 25px auto;"></div>
+ <p style="font-size: 1.2em; opacity: 0.8;">Site E-Commerce Symfony</p>
+ <div style="margin-top: 40px;">
+ <span class="tag">RNCP Niveau 5 - BAC +2</span>
+ <span class="tag">D&eacute;veloppeur Web et Web Mobile</span>
+ </div>
+ <p style="margin-top: 30px; opacity: 0.6;">Arnaud Barotteaux &mdash; 2024-2025</p>
+ </div>
+</div>
+
+<!-- SLIDE 2: Sommaire -->
+<div class="slide bg-dark" id="slide-2">
+ <h1> Sommaire</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 20px;">
+ <div>
+ <ul style="font-size: 1.1em;">
+ <li><span class="highlight">01</span> &mdash; Introduction &amp; Parcours</li>
+ <li><span class="highlight">02</span> &mdash; Pr&eacute;sentation du Projet</li>
+ <li><span class="highlight">03</span> &mdash; Gamme de Produits</li>
+ <li><span class="highlight">04</span> &mdash; Fonctionnalit&eacute;s du Site</li>
+ <li><span class="highlight">05</span> &mdash; Technologies Utilis&eacute;es</li>
+ <li><span class="highlight">06</span> &mdash; Architecture Symfony (MVC)</li>
+ <li><span class="highlight">07</span> &mdash; Base de Donn&eacute;es</li>
+ </ul>
+ </div>
+ <div>
+ <ul style="font-size: 1.1em;">
+ <li><span class="highlight">08</span> &mdash; Design Responsive (CSS)</li>
+ <li><span class="highlight">09</span> &mdash; JavaScript &amp; Interactivit&eacute;</li>
+ <li><span class="highlight">10</span> &mdash; Gestion du Panier &amp; Stock</li>
+ <li><span class="highlight">11</span> &mdash; S&eacute;curit&eacute;</li>
+ <li><span class="highlight">12</span> &mdash; Screenshots du Site</li>
+ <li><span class="highlight">13</span> &mdash; Bilan &amp; Perspectives</li>
+ <li><span class="highlight">14</span> &mdash; Questions</li>
+ </ul>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 3: Introduction -->
+<div class="slide bg-forest" id="slide-3">
+ <h1> Introduction</h1>
+ <div class="divider"></div>
+ <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+ <div class="two-cols">
+ <div>
+ <h3> Mon parcours</h3>
+ <ul>
+ <li>Curiosit&eacute; pour le <span class="highlight">vivant</span> et la <span class="highlight">technologie</span></li>
+ <li>Passionn&eacute; de science-fiction (Sunshine, Matrix, Interstellar)</li>
+ <li>Attrait pour le <span class="highlight">design inspir&eacute; de la nature</span></li>
+ <li>Convictions &eacute;cologiques fortes</li>
+ </ul>
+ </div>
+ <div>
+ <h3> Objectif du projet</h3>
+ <ul>
+ <li><strong>Moss Air</strong> : purificateur d'air &agrave; base de mousse vivante</li>
+ <li>Site e-commerce Symfony</li>
+ <li>Exp&eacute;rience d'achat <span class="highlight">qui a du sens</span></li>
+ <li>Technologie comme <span class="highlight">extension apaisante du quotidien</span></li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 4: Le Produit -->
+<div class="slide bg-moss" id="slide-4">
+ <h1> Le Produit : Moss Air</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 20px;">
+ <div>
+ <p style="font-size: 1.2em; line-height: 1.8;">
+ <strong>Moss Air</strong> est un purificateur d'air r&eacute;volutionnaire utilisant
+ la <span class="highlight">mousse vivante stabilis&eacute;e</span> pour filtrer naturellement l'air int&eacute;rieur.
+ </p>
+ <div style="margin-top: 25px;">
+ <h3>Concept &amp; Objectifs</h3>
+ <ul>
+ <li>Filtration naturelle par mousse vivante</li>
+ <li><strong>Objectif</strong> : r&eacute;duction significative des particules fines et COV</li>
+ <li>Inspir&eacute; de solutions de <span class="highlight">biofiltre v&eacute;g&eacute;tal</span> existantes</li>
+ <li>Faible consommation &eacute;nerg&eacute;tique (concept passif)</li>
+ <li>Sans filtre &agrave; changer, fonctionnement silencieux</li>
+ <li>Design minimaliste et &eacute;l&eacute;gant</li>
+ </ul>
+ </div>
+ </div>
+ <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <p style="font-size: 1.3em; text-align: center; margin-top: 20px;">
+ <em>"R&eacute;introduire l'intelligence naturelle<br>dans nos espaces urbains"</em>
+ </p>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 5: Gamme de Produits -->
+<div class="slide bg-dark" id="slide-5">
+ <h1> Gamme de Produits</h1>
+ <div class="divider"></div>
+ <div class="three-cols" style="margin-top: 10px; max-height: 50vh; align-items: start;">
+ <div style="text-align: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+  <img src="hero1.jpg" alt="Moss Air 1" style="width: 100%; max-height: 25vh; object-fit: contain; border-radius: 8px; margin-bottom: 8px;">
+  <h2 style="color: #90e060; font-size: 1.2em;">Moss Air 1</h2>
+  <p style="font-size: 1.4em; font-weight: 800; margin: 4px 0;">149,99&euro;</p>
+  <p style="font-size: 0.9em; opacity: 0.8;">Entr&eacute;e de gamme - Petits espaces</p>
+ </div>
+ <div style="text-align: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+  <img src="hero2.jpg" alt="Moss Air 2" style="width: 100%; max-height: 25vh; object-fit: contain; border-radius: 8px; margin-bottom: 8px;">
+  <h2 style="color: #90e060; font-size: 1.2em;">Moss Air 2</h2>
+  <p style="font-size: 1.4em; font-weight: 800; margin: 4px 0;">179,99&euro;</p>
+  <p style="font-size: 0.9em; opacity: 0.8;">Premium - Double filtration</p>
+ </div>
+ <div style="text-align: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+  <img src="hero3.jpg" alt="Moss Air 3" style="width: 100%; max-height: 25vh; object-fit: contain; border-radius: 8px; margin-bottom: 8px;">
+  <h2 style="color: #90e060; font-size: 1.2em;">Moss Air 3</h2>
+  <p style="font-size: 1.4em; font-weight: 800; margin: 4px 0;">199,99&euro;</p>
+  <p style="font-size: 0.9em; opacity: 0.8;">Haut de gamme - Technologie avanc&eacute;e</p>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 6: Fonctionnalites -->
+<div class="slide bg-forest" id="slide-6">
+ <h1> Fonctionnalit&eacute;s du Site</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 15px;">
+ <div>
+ <h3> Utilisateur (User)</h3>
+ <ul>
+ <li>Catalogue produits (3 mod&egrave;les)</li>
+ <li>Panier d'achat dynamique</li>
+ <li>V&eacute;rification du stock en temps r&eacute;el</li>
+ <li>Inscription / Connexion</li>
+ <li>Historique des commandes</li>
+ <li>Modification du profil</li>
+ </ul>
+ </div>
+ <div>
+ <h3> Administrateur (Admin)</h3>
+ <ul>
+ <li>Dashboard d'administration</li>
+ <li>Gestion des produits (CRUD)</li>
+ <li>Gestion des stocks</li>
+ <li>Gestion des utilisateurs</li>
+ <li>Acc&egrave;s secret (3 clics sur logo ou Ctrl+A)</li>
+ </ul>
+ <div style="margin-top: 20px;">
+ <table>
+ <tr><th>R&ocirc;le</th><th>Utilisateur</th><th>Acc&egrave;s</th></tr>
+ <tr><td><span class="badge" style="background:#e74c3c;">Admin</span></td><td>arnaud</td><td>Dashboard, produits, stocks</td></tr>
+ <tr><td><span class="badge green">User</span></td><td>user</td><td>Catalogue, panier, commandes</td></tr>
+ </table>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 7: Stack Technique -->
+<div class="slide bg-tech" id="slide-7">
+ <h1> Stack Technique</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 15px;">
+ <div>
+ <table>
+ <tr><th>Cat&eacute;gorie</th><th>Techno</th><th>Version</th></tr>
+ <tr><td><strong>Backend</strong></td><td>PHP, Symfony</td><td>8.x, Symfony 6</td></tr>
+ <tr><td><strong>ORM</strong></td><td>Doctrine</td><td>Derni&egrave;re version</td></tr>
+ <tr><td><strong>BDD</strong></td><td>MySQL</td><td>8.x</td></tr>
+ <tr><td><strong>Frontend</strong></td><td>HTML5, CSS3, JS</td><td>ES6+</td></tr>
+ <tr><td><strong>CSS</strong></td><td>Bootstrap</td><td>5.x</td></tr>
+ <tr><td><strong>Templating</strong></td><td>Twig</td><td>3.x</td></tr>
+ <tr><td><strong>Versioning</strong></td><td>Git, GitHub</td><td>-</td></tr>
+ </table>
+ </div>
+ <div>
+ <h3>Pourquoi Symfony ?</h3>
+ <div class="card">
+ <ul>
+ <li><strong>Architecture MVC</strong> : S&eacute;paration claire mod&egrave;les/vues/contr&ocirc;leurs</li>
+ <li><strong>Doctrine ORM</strong> : Gestion simplifi&eacute;e de la BDD</li>
+ <li><strong>S&eacute;curit&eacute; int&eacute;gr&eacute;e</strong> : CSRF, hachage, contr&ocirc;le d'acc&egrave;s</li>
+ <li><strong>Twig</strong> : Protection XSS automatique</li>
+ <li><strong>Migrations</strong> : Versioning de la BDD</li>
+ <li><strong>Communaut&eacute; active</strong> : Documentation riche</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 8: Architecture MVC -->
+<div class="slide bg-dark" id="slide-8">
+ <h1> Architecture Symfony (MVC)</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 15px;">
+ <div>
+ <div class="tree">
+ <span style="color: #90e060;">src/</span><br>
+ &#9500;&#9472;&#9472; <span style="color: #ffa657;">Controller/</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; PanierController.php <span style="color: #8b949e;"># Panier</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; AdminController.php <span style="color: #8b949e;"># Dashboard</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; ProduitController.php <span style="color: #8b949e;"># Produits</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; SecurityController.php <span style="color: #8b949e;"># Auth</span><br>
+ &#9500;&#9472;&#9472; <span style="color: #ffa657;">Entity/</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; Produit.php <span style="color: #8b949e;"># (avec stock)</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; User.php<br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; Commande.php<br>
+ &#9500;&#9472;&#9472; <span style="color: #ffa657;">Repository/</span><br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; ProduitRepository.php<br>
+ &#9474;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; UserRepository.php<br>
+ <span style="color: #90e060;">migrations/</span><br>
+ &#9492;&#9472;&#9472; Version20251203150000.php <span style="color: #8b949e;"># Stock</span>
+ </div>
+ </div>
+ <div>
+ <h3>Principe MVC</h3>
+ <div class="flow-diagram" style="flex-direction: column; align-items: stretch;">
+ <div class="flow-step" style="background: rgba(231,76,60,0.4); border-color: #e74c3c;">
+ <strong>Mod&egrave;le (Entity)</strong><br>
+ <small>Produit, User, Commande &mdash; Donn&eacute;es &amp; logique m&eacute;tier</small>
+ </div>
+ <div style="text-align: center; font-size: 1.5em; color: #90e060;"></div>
+ <div class="flow-step" style="background: rgba(41,128,185,0.4); border-color: #2980b9;">
+ <strong>Vue (Twig)</strong><br>
+ <small>Templates HTML &mdash; Affichage des donn&eacute;es</small>
+ </div>
+ <div style="text-align: center; font-size: 1.5em; color: #90e060;"></div>
+ <div class="flow-step" style="background: rgba(39,174,96,0.4); border-color: #27ae60;">
+ <strong>Contr&ocirc;leur (Controller)</strong><br>
+ <small>Routes, logique, traitement des requ&ecirc;tes</small>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 9: Base de Donnees -->
+<div class="slide bg-forest" id="slide-9">
+ <h1> Base de Donn&eacute;es</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 15px;">
+ <div>
+ <h3>Mod&egrave;le Conceptuel (MCD)</h3>
+ <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+ <div class="mcd-table">
+ <div class="mcd-title">USER</div>
+ <div class="mcd-field"><span class="mcd-pk">id (PK)</span></div>
+ <div class="mcd-field">prenom</div>
+ <div class="mcd-field">nom</div>
+ <div class="mcd-field">email</div>
+ <div class="mcd-field">password</div>
+ <div class="mcd-field">role</div>
+ <div class="mcd-field">created_at</div>
+ </div>
+ <div class="mcd-table">
+ <div class="mcd-title">PRODUIT</div>
+ <div class="mcd-field"><span class="mcd-pk">id (PK)</span></div>
+ <div class="mcd-field">nom</div>
+ <div class="mcd-field">description</div>
+ <div class="mcd-field">prix</div>
+ <div class="mcd-field">image</div>
+ <div class="mcd-field">actif</div>
+ <div class="mcd-field"><span class="mcd-new">stock </span></div>
+ <div class="mcd-field">created_at</div>
+ </div>
+ <div class="mcd-table">
+ <div class="mcd-title">COMMANDE</div>
+ <div class="mcd-field"><span class="mcd-pk">id (PK)</span></div>
+ <div class="mcd-field">nom_client</div>
+ <div class="mcd-field">produit</div>
+ <div class="mcd-field">quantite</div>
+ <div class="mcd-field">prix</div>
+ <div class="mcd-field">date_commande</div>
+ </div>
+ </div>
+ </div>
+ <div>
+ <h3>Relations cl&eacute;s</h3>
+ <div class="card">
+ <ul>
+ <li><strong>User &rarr; Commande</strong> : un utilisateur passe plusieurs commandes (1:N)</li>
+ <li><strong>Produit &rarr; Commande</strong> : un produit appara&icirc;t dans plusieurs commandes (1:N)</li>
+ <li><strong>Stock</strong> : ajout&eacute; via <span class="highlight">migration Doctrine</span> (colonne stock sur Produit)</li>
+ </ul>
+ </div>
+ <h3 style="margin-top: 20px;">Gestion avec Doctrine ORM</h3>
+ <div class="card">
+ <ul>
+ <li><strong>Entit&eacute;s PHP</strong> = tables MySQL</li>
+ <li><strong>Migrations</strong> = versioning du sch&eacute;ma</li>
+ <li><strong>Repository</strong> = requ&ecirc;tes personnalis&eacute;es</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 10: CSS Responsive -->
+<div class="slide bg-tech" id="slide-10">
+ <h1> Design Responsive (CSS)</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 10px;">
+ <div>
+ <p style="margin-bottom: 15px;">Utilisation de <span class="highlight">CSS3</span> et <span class="highlight">media queries</span> pour adapter le site &agrave; tous les &eacute;crans.</p>
+ <div class="code-block">
+<span class="comment">/* Header desktop */</span>
+.<span class="var">header-section</span> {
+ <span class="keyword">display</span>: flex;
+ <span class="keyword">background</span>: <span class="func">linear-gradient</span>(<span class="string">135deg, #4a7c59, #6b8e7a</span>);
+}
+
+<span class="comment">/* Tablette (max 990px) */</span>
+<span class="keyword">@media</span> (<span class="var">max-width</span>: 990px) {
+ .<span class="var">list</span> ul {
+ <span class="keyword">position</span>: fixed;
+ <span class="keyword">right</span>: <span class="string">-250px</span>;
+ <span class="keyword">transition</span>: all 0.4s linear;
+ }
+ .<span class="var">list</span> ul.<span class="func">active</span> {
+ <span class="keyword">right</span>: <span class="string">0</span>;
+ }
+}
+ </div>
+ </div>
+ <div>
+ <h3>Tests de Responsive</h3>
+ <div class="card">
+ <ul>
+ <li><strong>Desktop</strong> : 1920x1080px</li>
+ <li><strong>Tablette</strong> : 768x1024px</li>
+ <li><strong>Mobile</strong> : 375x667px</li>
+ </ul>
+ </div>
+ <h3 style="margin-top: 20px;">Comportement</h3>
+ <div class="card">
+ <ul>
+ <li>Desktop &rarr; Navigation horizontale compl&egrave;te</li>
+ <li>Mobile &rarr; Menu hamburger lat&eacute;ral (glisse depuis la droite)</li>
+ <li>Animation fluide avec <code style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">transition</code></li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 11: JavaScript -->
+<div class="slide bg-dark" id="slide-11">
+ <h1> JavaScript &amp; Interactivit&eacute;</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 10px;">
+ <div>
+ <h3> Menu Hamburger Responsive</h3>
+ <div class="card">
+ <ul>
+ <li>Menu <strong>hamburger</strong> en mobile (glisse depuis la droite)</li>
+ <li><strong>Toggle</strong> : afficher/masquer avec classList</li>
+ <li>Fermeture automatique au clic sur un lien</li>
+ <li>Animation CSS <strong>transition</strong> fluide</li>
+ </ul>
+ </div>
+ <h3 style="margin-top: 20px;"> Acc&egrave;s Admin Secret</h3>
+ <div class="card">
+ <ul>
+ <li><strong>3 clics rapides</strong> sur le logo &rarr; modale admin</li>
+ <li>Raccourci clavier <strong>Ctrl+A</strong></li>
+ <li>S&eacute;curit&eacute; c&ocirc;t&eacute; serveur (<code style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">checkAdmin()</code>)</li>
+ </ul>
+ </div>
+ </div>
+ <div>
+ <h3> Fonctionnalit&eacute;s JS cl&eacute;s</h3>
+ <div class="card">
+ <ul>
+ <li><strong>Manipulation du DOM</strong> : s&eacute;lection, &eacute;v&eacute;nements, classList</li>
+ <li><strong>IIFE</strong> : isolation du scope (pas de pollution globale)</li>
+ <li><strong>Accessibilit&eacute;</strong> : attribut aria-expanded</li>
+ <li><strong>ES6+</strong> : arrow functions, const/let, forEach</li>
+ </ul>
+ </div>
+ <h3 style="margin-top: 20px;"> R&ocirc;le du JavaScript</h3>
+ <div class="card">
+ <p>Le JS g&egrave;re l'<span class="highlight">interactivit&eacute; c&ocirc;t&eacute; client</span> :</p>
+ <ul style="margin-top: 8px;">
+ <li>Navigation responsive</li>
+ <li>Interactions utilisateur (clics, raccourcis)</li>
+ <li>Compl&eacute;ment au back-end Symfony</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 12: Gestion Panier & Stock -->
+<div class="slide bg-forest" id="slide-12">
+ <h1> Gestion du Panier &amp; Stock</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 10px;">
+ <div>
+ <h3>Flux de gestion du stock</h3>
+ <div class="flow-diagram" style="flex-direction: column; align-items: stretch;">
+ <div class="flow-step"> Utilisateur ajoute au panier</div>
+ <div style="text-align: center; color: #90e060; font-size: 1.3em;"> POST /panier/ajouter</div>
+ <div class="flow-step" style="background: rgba(230,126,34,0.4); border-color: #e67e22;">
+ V&eacute;rification stock disponible<br>
+ <small>IF quantit&eacute; &gt; stock &rarr; Erreur</small>
+ </div>
+ <div style="text-align: center; color: #90e060; font-size: 1.3em;"></div>
+ <div class="flow-step"> Panier mis &agrave; jour en session</div>
+ <div style="text-align: center; color: #90e060; font-size: 1.3em;"> POST /panier/paiement-effectue</div>
+ <div class="flow-step" style="background: rgba(39,174,96,0.4); border-color: #27ae60;">
+ <strong>decrementStock()</strong><br>
+ <small>Stock d&eacute;cr&eacute;ment&eacute; + Commande enregistr&eacute;e</small>
+ </div>
+ </div>
+ </div>
+ <div>
+ <h3>Points cl&eacute;s du code</h3>
+ <div class="card">
+ <ul>
+ <li><strong>Double v&eacute;rification</strong> du stock (ajout + validation)</li>
+ <li><strong>Session PHP</strong> pour stocker le panier</li>
+ <li><strong>decrementStock()</strong> &rarr; jamais n&eacute;gatif (<code style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">max(0, ...)</code>)</li>
+ <li><strong>Transaction atomique</strong> avec flush()</li>
+ <li>Rollback automatique en cas d'erreur</li>
+ </ul>
+ </div>
+ <h3 style="margin-top: 15px;">Migration Doctrine</h3>
+ <div class="card">
+ <p>Ajout de la colonne <span class="highlight">stock</span> (INT, NOT NULL, DEFAULT 0) :</p>
+ <div class="code-block" style="margin-top: 10px; font-size: 0.8em;">
+<span class="keyword">php</span> bin/console <span class="func">make:migration</span>
+<span class="keyword">php</span> bin/console <span class="func">doctrine:migrations:migrate</span>
+<span class="keyword">php</span> bin/console <span class="func">doctrine:schema:validate</span>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 13: Securite -->
+<div class="slide bg-tech" id="slide-13">
+ <h1> S&eacute;curit&eacute;</h1>
+ <div class="divider"></div>
+ <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+ <div class="two-cols">
+ <div>
+ <h3> Authentification</h3>
+ <ul>
+ <li><strong>bcrypt</strong> &mdash; mots de passe hach&eacute;s</li>
+ <li><strong>checkAdmin()</strong> &mdash; contr&ocirc;le d'acc&egrave;s serveur</li>
+ <li>Validation <strong>HTML5 + PHP</strong></li>
+ </ul>
+ <h3 style="margin-top: 20px;"> Protection CSRF</h3>
+ <ul>
+ <li>Tokens g&eacute;n&eacute;r&eacute;s automatiquement par <strong>Twig</strong></li>
+ <li>Anti-requ&ecirc;tes forg&eacute;es</li>
+ </ul>
+ </div>
+ <div>
+ <h3> Protection XSS</h3>
+ <ul>
+ <li>&Eacute;chappement <strong>automatique</strong> des variables Twig</li>
+ <li>Aucune injection HTML possible</li>
+ </ul>
+ <h3 style="margin-top: 20px;"> Int&eacute;grit&eacute; des donn&eacute;es</h3>
+ <ul>
+ <li><code style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">max(0, stock - qty)</code> &mdash; jamais n&eacute;gatif</li>
+ <li>Double v&eacute;rification stock (ajout + validation)</li>
+ <li>Transaction atomique avec <strong>flush()</strong></li>
+ </ul>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 14: Screenshots -->
+<div class="slide bg-dark" id="slide-14">
+ <h1> Screenshots du Site</h1>
+ <div class="divider"></div>
+ <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+ <div class="three-cols">
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Page d'Accueil</h3>
+ <p style="font-size: 0.95em;">Hero section avec image purificateur, titre MossAir, bouton "D&eacute;couvrir", navigation compl&egrave;te</p>
+ <div style="margin-top: 10px;">
+ <span class="badge green">Desktop</span>
+ <span class="badge blue">Mobile</span>
+ </div>
+ </div>
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Panier &amp; Commande</h3>
+ <p style="font-size: 0.95em;">Panier dynamique, modification quantit&eacute;, modal de confirmation, v&eacute;rification stock</p>
+ <div style="margin-top: 10px;">
+ <span class="badge green">Ajout</span>
+ <span class="badge orange">Validation</span>
+ </div>
+ </div>
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Dashboard Admin</h3>
+ <p style="font-size: 0.95em;">Gestion produits/stocks, badges color&eacute;s, formulaire cr&eacute;ation produit, CRUD complet</p>
+ <div style="margin-top: 10px;">
+ <span class="badge" style="background:#e74c3c;">Admin only</span>
+ </div>
+ </div>
+ </div>
+ <div class="three-cols" style="margin-top: 15px;">
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Authentification</h3>
+ <p style="font-size: 0.95em;">Connexion (pr&eacute;nom + mdp), Inscription (7 champs), Modal modification profil</p>
+ </div>
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Fiche Produit</h3>
+ <p style="font-size: 0.95em;">Image, prix, stock en temps r&eacute;el, caract&eacute;ristiques, bouton "Ajouter au panier"</p>
+ </div>
+ <div style="text-align: center;">
+  <h3 style="color: #fff;">Version Mobile</h3>
+ <p style="font-size: 0.95em;">Menu hamburger, layout adapt&eacute;, images responsive, navigation fluide</p>
+ </div>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 15: Bilan -->
+<div class="slide bg-forest" id="slide-15">
+ <h1> Bilan &amp; Perspectives</h1>
+ <div class="divider"></div>
+ <div class="two-cols" style="margin-top: 20px;">
+ <div>
+ <h3> R&eacute;alis&eacute;</h3>
+ <ul>
+ <li>Site e-commerce <strong>fonctionnel</strong></li>
+ <li>Architecture <strong>MVC Symfony</strong></li>
+ <li>Auth <strong>2 r&ocirc;les</strong> (User / Admin)</li>
+ <li>Panier + <strong>contr&ocirc;le stock</strong></li>
+ <li>Dashboard admin <strong>CRUD</strong></li>
+ <li>Design <strong>responsive</strong></li>
+ <li>S&eacute;curit&eacute; : CSRF, bcrypt, XSS</li>
+ </ul>
+ </div>
+ <div>
+ <h3> Perspectives</h3>
+ <ul>
+ <li>Paiement <strong>Stripe</strong></li>
+ <li>Avis clients</li>
+ <li>Emails de confirmation</li>
+ <li>Suivi de commande</li>
+ <li>Codes promo</li>
+ </ul>
+ <h3 style="margin-top: 20px;"> Acquis</h3>
+ <ul>
+ <li><strong>Symfony 6</strong> + Doctrine ORM</li>
+ <li>Gestion de projet <strong>A &agrave; Z</strong></li>
+ <li>Bonnes pratiques <strong>s&eacute;curit&eacute; web</strong></li>
+ </ul>
+ </div>
+ </div>
+</div>
+
+<!-- SLIDE 16: Questions -->
+<div class="slide bg-green" id="slide-16">
+ <div class="flex-center">
+  <h1 style="font-size: 4em; margin-top: 20px;">Merci !</h1>
+ <div class="divider" style="margin: 25px auto;"></div>
+ <p style="font-size: 1.8em; opacity: 0.9;">Des questions ?</p>
+ <div style="margin-top: 40px;">
+ <span class="tag">MossAir</span>
+ <span class="tag">Symfony 6</span>
+ <span class="tag">E-Commerce</span>
+ <span class="tag">PHP 8</span>
+ <span class="tag">MySQL</span>
+ </div>
+ <p style="margin-top: 50px; opacity: 0.5; font-size: 1em;">
+ Arnaud Barotteaux &mdash; D&eacute;veloppeur Web et Web Mobile &mdash; 2024-2025
+ </p>
+ </div>
+</div>
+
+<!-- Progress bar & navigation -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-number" id="slideNumber">1 / 16</div>
+<div class="nav-hint">&#8592; &#8594; Fl&egrave;ches clavier | Clic pour avancer</div>
+
+<script>
+ let currentSlide = 1;
+ const totalSlides = 16;
+
+ function showSlide(n) {
+ if (n < 1) n = 1;
+ if (n > totalSlides) n = totalSlides;
+
+ document.querySelectorAll('.slide').forEach(s => {
+ s.classList.remove('active');
+ s.style.display = 'none';
+ });
+
+ const slide = document.getElementById('slide-' + n);
+ slide.style.display = 'flex';
+ requestAnimationFrame(() => {
+ slide.classList.add('active');
+ });
+
+ currentSlide = n;
+ document.getElementById('slideNumber').textContent = n + ' / ' + totalSlides;
+ document.getElementById('progressBar').style.width = ((n / totalSlides) * 100) + '%';
+ }
+
+ document.addEventListener('keydown', function(e) {
+ if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+ e.preventDefault();
+ showSlide(currentSlide + 1);
+ } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+ e.preventDefault();
+ showSlide(currentSlide - 1);
+ } else if (e.key === 'Home') {
+ showSlide(1);
+ } else if (e.key === 'End') {
+ showSlide(totalSlides);
+ } else if (e.key === 'f' || e.key === 'F') {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen();
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ });
+
+ document.addEventListener('click', function(e) {
+ if (e.clientX > window.innerWidth / 2) {
+ showSlide(currentSlide + 1);
+ } else {
+ showSlide(currentSlide - 1);
+ }
+ });
+
+ // Touch support
+ let touchStartX = 0;
+ document.addEventListener('touchstart', function(e) {
+ touchStartX = e.changedTouches[0].screenX;
+ });
+ document.addEventListener('touchend', function(e) {
+ const diff = touchStartX - e.changedTouches[0].screenX;
+ if (Math.abs(diff) > 50) {
+ if (diff > 0) showSlide(currentSlide + 1);
+ else showSlide(currentSlide - 1);
+ }
+ });
+
+ showSlide(1);
+</script>
+</body>
+</html>
