@@ -3122,7 +3122,345 @@ php bin/console doctrine:schema:validate</code></pre>
 </div>
 
 <!-- ============================================================ -->
-<!-- PAGE 40 : CONCLUSION FINALE                                    -->
+<!-- PAGE 40 : MAQUETTES WIREFRAME - DESKTOP                        -->
+<!-- ============================================================ -->
+<div class="page" style="padding: 30px 35px;">
+    <div class="page-header">Maquettes Wireframe</div>
+
+    <h2>14. Maquettes des Pages (Desktop)</h2>
+    <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-light);">Wireframes d&eacute;taill&eacute;s correspondant aux pages finales du site Symfony. Chaque maquette refl&egrave;te la structure exacte du template Twig et du CSS associ&eacute;.</p>
+
+    <!-- Mini wireframes inline -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+        <!-- Accueil -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Accueil <span style="float:right; opacity:0.6; font-family: monospace;">/</span></div>
+            <div style="padding: 8px;">
+                <div style="background: linear-gradient(135deg, #2d4a2b, #111); height: 80px; border-radius: 4px; display:flex; align-items:center; justify-content:flex-end; padding:10px;">
+                    <div style="text-align:right;">
+                        <div style="color:#90EE90; font-size:14px; font-weight:700;">MossAir</div>
+                        <div style="color:rgba(255,255,255,0.6); font-size:8px;">Purificateur d'air naturel</div>
+                        <div style="background:#4a7c59; color:white; padding:2px 8px; border-radius:3px; font-size:8px; display:inline-block; margin-top:4px;">D&eacute;couvrir</div>
+                    </div>
+                </div>
+                <div style="font-size:8px; color:#999; margin-top:4px;">Hero plein &eacute;cran + CTA</div>
+            </div>
+        </div>
+
+        <!-- Produit -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Page Produit <span style="float:right; opacity:0.6; font-family: monospace;">/produit/{id}</span></div>
+            <div style="padding: 8px; display:flex; gap:8px;">
+                <div style="flex:1; background:#e8e8e8; height:70px; border-radius:4px; border:1px dashed #ccc; display:flex; align-items:center; justify-content:center; font-size:8px; color:#888;">Photo</div>
+                <div style="flex:1; font-size:8px;">
+                    <div style="font-weight:700;">Moss Air Classic</div>
+                    <div style="color:#4a7c59; font-weight:700;">149,00 &euro;</div>
+                    <div style="background:#d4edda; color:#155724; padding:1px 4px; border-radius:8px; display:inline-block; font-size:7px; margin:2px 0;">En stock</div>
+                    <div style="color:#666; font-size:7px;">Quantit&eacute; : &minus; 1 +</div>
+                    <div style="background:#4a7c59; color:white; padding:2px 6px; border-radius:3px; text-align:center; margin-top:3px; font-size:7px;">Ajouter au panier</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connexion -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Connexion <span style="float:right; opacity:0.6; font-family: monospace;">/connexion</span></div>
+            <div style="padding: 8px; text-align:center;">
+                <div style="display:flex; border-bottom:1px solid #eee; margin-bottom:6px;">
+                    <div style="flex:1; padding:4px; font-size:9px; font-weight:600; color:#4a7c59; border-bottom:2px solid #4a7c59;">Connexion</div>
+                    <div style="flex:1; padding:4px; font-size:9px; color:#999;">Inscription</div>
+                </div>
+                <div style="border:1px solid #ddd; border-radius:4px; padding:3px 6px; font-size:8px; color:#999; margin-bottom:4px;">Pr&eacute;nom</div>
+                <div style="border:1px solid #ddd; border-radius:4px; padding:3px 6px; font-size:8px; color:#999; margin-bottom:4px;">Mot de passe</div>
+                <div style="background:#4a7c59; color:white; padding:3px; border-radius:3px; font-size:8px;">Se connecter</div>
+            </div>
+        </div>
+
+        <!-- Panier -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Panier <span style="float:right; opacity:0.6; font-family: monospace;">/panier</span></div>
+            <div style="padding: 8px; font-size:8px;">
+                <div style="display:flex; gap:4px; align-items:center; background:#f9f9f9; padding:4px; border-radius:4px; margin-bottom:3px;">
+                    <div style="width:25px; height:25px; background:#e8e8e8; border-radius:3px; flex-shrink:0;"></div>
+                    <div style="flex:1;"><b>Moss Air</b> &mdash; 149&euro; &times;1</div>
+                    <span style="color:#e74c3c;">&#128465;</span>
+                </div>
+                <div style="display:flex; gap:4px; align-items:center; background:#f9f9f9; padding:4px; border-radius:4px; margin-bottom:4px;">
+                    <div style="width:25px; height:25px; background:#e8e8e8; border-radius:3px; flex-shrink:0;"></div>
+                    <div style="flex:1;"><b>Double Air</b> &mdash; 249&euro; &times;2</div>
+                    <span style="color:#e74c3c;">&#128465;</span>
+                </div>
+                <div style="text-align:right; font-weight:700;">Total : 647 &euro;</div>
+                <div style="text-align:right; margin-top:3px;">
+                    <span style="background:#4a7c59; color:white; padding:2px 8px; border-radius:3px; font-size:7px;">Commander</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Histoire -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Histoire <span style="float:right; opacity:0.6; font-family: monospace;">/histoire</span></div>
+            <div style="padding: 8px;">
+                <div style="background:#111; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:#666; font-size:14px; margin-bottom:4px;">&#9654;</div>
+                <div style="display:flex; gap:3px; margin-bottom:4px;">
+                    <div style="flex:1; background:linear-gradient(135deg,#2d4a2b,#4a7c59); color:white; padding:4px; border-radius:4px; text-align:center; font-size:9px; font-weight:700;">&minus;90%</div>
+                    <div style="flex:1; background:linear-gradient(135deg,#2d4a2b,#4a7c59); color:white; padding:4px; border-radius:4px; text-align:center; font-size:9px; font-weight:700;">&minus;60%</div>
+                    <div style="flex:1; background:linear-gradient(135deg,#2d4a2b,#4a7c59); color:white; padding:4px; border-radius:4px; text-align:center; font-size:9px; font-weight:700;">&minus;40%</div>
+                </div>
+                <div style="font-size:7px; color:#999;">Vid&eacute;o YouTube autoplay + statistiques + vid&eacute;os compl&eacute;mentaires</div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 6px 10px; font-size: 11px; font-weight: 600;">Admin Dashboard <span style="float:right; opacity:0.6; font-family: monospace;">/admin</span></div>
+            <div style="padding: 8px; font-size:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <b style="font-size:10px;">Gestion produits</b>
+                    <span style="background:#4a7c59; color:white; padding:1px 5px; border-radius:3px; font-size:7px;">+ Nouveau</span>
+                </div>
+                <table style="width:100%; border-collapse:collapse; font-size:7px;">
+                    <tr style="background:#f8f9fa;"><th style="padding:2px; text-align:left;">Nom</th><th>Prix</th><th>Stock</th><th>Actions</th></tr>
+                    <tr><td style="padding:2px;">Moss Air</td><td>149&euro;</td><td><span style="background:#d4edda; color:#155724; padding:0 3px; border-radius:6px;">15</span></td><td>&#9998; &#128465;</td></tr>
+                    <tr><td style="padding:2px;">Double Air</td><td>249&euro;</td><td><span style="background:#fff3cd; color:#856404; padding:0 3px; border-radius:6px;">5</span></td><td>&#9998; &#128465;</td></tr>
+                    <tr><td style="padding:2px;">Filtre</td><td>29&euro;</td><td><span style="background:#f8d7da; color:#721c24; padding:0 3px; border-radius:6px;">0</span></td><td>&#9998; &#128465;</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-top: 12px; font-size: 11px; color: var(--text-light); text-align:center;">
+        <em>Voir la version compl&egrave;te et interactive des wireframes : <a href="../index2.html" style="color:var(--green-mid);">Wireframes MossAir.life</a></em>
+    </p>
+
+    <div class="page-footer">
+        <span>Page 40</span>
+        <span>MossAir &copy; 2025</span>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 41 : MAQUETTES WIREFRAME - MOBILE & TABLETTE              -->
+<!-- ============================================================ -->
+<div class="page" style="padding: 30px 35px;">
+    <div class="page-header">Maquettes Wireframe (suite)</div>
+
+    <h2>14.2 Maquettes Responsive (Mobile &amp; Tablette)</h2>
+    <p style="margin-bottom: 15px; font-size: 13px; color: var(--text-light);">Adaptations responsive des pages principales. Breakpoints : Mobile &le;767px, Tablette 768-991px.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;">
+
+        <!-- Mobile Accueil -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 4px 8px; font-size: 9px; font-weight: 600;">Accueil Mobile</div>
+            <div style="padding: 6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#2d4a2b; padding:3px 5px; border-radius:3px; margin-bottom:4px;">
+                    <span style="color:#90EE90; font-size:8px; font-weight:700;">MossAir</span>
+                    <span style="color:white; font-size:10px;">&#9776;</span>
+                </div>
+                <div style="background:linear-gradient(135deg,#2d4a2b,#111); height:50px; border-radius:3px; display:flex; align-items:center; justify-content:center;">
+                    <div style="text-align:center;">
+                        <div style="color:#90EE90; font-size:10px; font-weight:700;">MossAir</div>
+                        <div style="background:#4a7c59; color:white; padding:1px 5px; border-radius:2px; font-size:6px; margin-top:2px;">D&eacute;couvrir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Produit -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 4px 8px; font-size: 9px; font-weight: 600;">Produit Mobile</div>
+            <div style="padding: 6px;">
+                <div style="background:#e8e8e8; height:35px; border-radius:3px; border:1px dashed #ccc; display:flex; align-items:center; justify-content:center; font-size:6px; color:#888; margin-bottom:3px;">Photo 100%</div>
+                <div style="font-size:8px; font-weight:700;">Moss Air</div>
+                <div style="font-size:8px; color:#4a7c59; font-weight:700;">149 &euro;</div>
+                <div style="background:#4a7c59; color:white; padding:2px; border-radius:2px; text-align:center; font-size:6px; margin-top:2px;">Ajouter au panier</div>
+            </div>
+        </div>
+
+        <!-- Mobile Panier -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 4px 8px; font-size: 9px; font-weight: 600;">Panier Mobile</div>
+            <div style="padding: 6px; font-size:7px;">
+                <div style="background:#f9f9f9; padding:3px; border-radius:3px; margin-bottom:2px;">
+                    <b>Moss Air</b> &mdash; 149&euro;
+                </div>
+                <div style="font-weight:700; text-align:center; margin:3px 0;">Total : 647&euro;</div>
+                <div style="background:#4a7c59; color:white; padding:2px; border-radius:2px; text-align:center; font-size:6px;">Commander</div>
+            </div>
+        </div>
+
+        <!-- Mobile Admin -->
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <div style="background: var(--green-dark); color: white; padding: 4px 8px; font-size: 9px; font-weight: 600;">Admin Mobile</div>
+            <div style="padding: 6px; font-size:7px;">
+                <div style="background:#f9f9f9; padding:3px; border-radius:3px; margin-bottom:2px;">
+                    <b>Moss Air</b> 149&euro; <span style="background:#d4edda; font-size:6px; padding:0 2px; border-radius:4px;">15</span>
+                </div>
+                <div style="background:#f9f9f9; padding:3px; border-radius:3px; margin-bottom:2px;">
+                    <b>Double Air</b> 249&euro; <span style="background:#fff3cd; font-size:6px; padding:0 2px; border-radius:4px;">5</span>
+                </div>
+                <div style="display:flex; border-top:1px solid #eee; margin-top:3px; padding-top:2px;">
+                    <div style="flex:1; text-align:center; color:#4a7c59; font-size:6px; font-weight:600;">Produits</div>
+                    <div style="flex:1; text-align:center; color:#999; font-size:6px;">Users</div>
+                    <div style="flex:1; text-align:center; color:#999; font-size:6px;">Stats</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="margin: 15px 0 10px; font-size: 15px;">Strat&eacute;gie Responsive</h3>
+    <table style="width:100%; border-collapse:collapse; font-size: 12px; border: 1px solid var(--border); border-radius: 8px; overflow:hidden;">
+        <thead>
+            <tr style="background: var(--green-pale);">
+                <th style="padding: 8px; text-align:left; border-bottom: 1px solid var(--border);">&Eacute;l&eacute;ment</th>
+                <th style="padding: 8px; text-align:left; border-bottom: 1px solid var(--border);">Desktop (&ge;992px)</th>
+                <th style="padding: 8px; text-align:left; border-bottom: 1px solid var(--border);">Tablette (768-991px)</th>
+                <th style="padding: 8px; text-align:left; border-bottom: 1px solid var(--border);">Mobile (&le;767px)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;"><strong>Navigation</strong></td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Horizontale compl&egrave;te</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Horizontale compacte</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Menu hamburger &#9776;</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;"><strong>Grilles</strong></td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Multi-colonnes</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">2 colonnes</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">1 colonne empil&eacute;e</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;"><strong>Hero</strong></td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">100vh plein &eacute;cran</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">80vh</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">60vh centr&eacute;</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;"><strong>Footer</strong></td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">4 colonnes</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">2 colonnes</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">1 colonne</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;"><strong>Panier</strong></td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Items horizontaux</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Items horizontaux</td>
+                <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">Items empil&eacute;s</td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 8px;"><strong>Admin</strong></td>
+                <td style="padding: 6px 8px;">Tableau complet</td>
+                <td style="padding: 6px 8px;">Tableau compact</td>
+                <td style="padding: 6px 8px;">Cards + bottom tabs</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box" style="margin-top: 15px;">
+        <p style="font-size: 12px;"><strong>Fichiers CSS :</strong> 6 fichiers (1380 lignes) &mdash; <code>style.css</code> (base), <code>header.css</code> (navbar), <code>main.css</code> (contenu), <code>footer.css</code>, <code>responsive.css</code> (media queries), <code>rgpd.css</code> (bandeau cookies)</p>
+    </div>
+
+    <div class="page-footer">
+        <span>Page 41</span>
+        <span>MossAir &copy; 2025</span>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 42 : ARCHITECTURE (intégration depuis index3)             -->
+<!-- ============================================================ -->
+<div class="page" style="padding: 30px 35px;">
+    <div class="page-header">Architecture &amp; Navigation</div>
+
+    <h2>15. Architecture du Site</h2>
+
+    <h3 style="margin: 10px 0 8px;">15.1 Flux Utilisateur Principal</h3>
+    <div style="background: var(--green-pale); border-radius: 8px; padding: 15px; margin-bottom: 15px; text-align:center; font-size: 12px;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:6px;">
+            <span style="background:white; padding:5px 10px; border-radius:6px; border:1px solid var(--border);">Accueil</span>
+            <span>&rarr;</span>
+            <span style="background:white; padding:5px 10px; border-radius:6px; border:1px solid var(--border);">Boutique</span>
+            <span>&rarr;</span>
+            <span style="background:white; padding:5px 10px; border-radius:6px; border:1px solid var(--border);">Produit</span>
+            <span>&rarr;</span>
+            <span style="background:white; padding:5px 10px; border-radius:6px; border:1px solid var(--border);">Panier</span>
+            <span>&rarr;</span>
+            <span style="background:#fff3cd; padding:5px 10px; border-radius:6px; border:1px solid #ffc107;">[Connexion]</span>
+            <span>&rarr;</span>
+            <span style="background:white; padding:5px 10px; border-radius:6px; border:1px solid var(--border);">Paiement</span>
+            <span>&rarr;</span>
+            <span style="background:#d4edda; padding:5px 10px; border-radius:6px; border:1px solid #28a745;">Confirmation</span>
+        </div>
+    </div>
+
+    <h3 style="margin: 15px 0 8px;">15.2 Zones d'Acc&egrave;s (3 r&ocirc;les)</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
+        <div style="border:2px solid #28a745; border-radius:8px; padding:12px;">
+            <div style="font-weight:700; color:#28a745; margin-bottom:6px; font-size:13px;">&#128275; Zone Publique</div>
+            <ul style="font-size:11px; list-style:none; padding:0; line-height:1.8;">
+                <li>&bull; Accueil</li>
+                <li>&bull; Boutique / Produit</li>
+                <li>&bull; Histoire / &Agrave; propos</li>
+                <li>&bull; Panier / CGV</li>
+                <li>&bull; Connexion / Inscription</li>
+            </ul>
+        </div>
+        <div style="border:2px solid #007bff; border-radius:8px; padding:12px;">
+            <div style="font-weight:700; color:#007bff; margin-bottom:6px; font-size:13px;">&#128100; Zone Membre</div>
+            <ul style="font-size:11px; list-style:none; padding:0; line-height:1.8;">
+                <li>&bull; Dashboard perso</li>
+                <li>&bull; Mes commandes</li>
+                <li>&bull; Mon profil</li>
+                <li>&bull; Paiement</li>
+            </ul>
+        </div>
+        <div style="border:2px solid #e74c3c; border-radius:8px; padding:12px;">
+            <div style="font-weight:700; color:#e74c3c; margin-bottom:6px; font-size:13px;">&#128737; Zone Admin</div>
+            <ul style="font-size:11px; list-style:none; padding:0; line-height:1.8;">
+                <li>&bull; Gestion Produits (CRUD)</li>
+                <li>&bull; Gestion Commandes</li>
+                <li>&bull; Gestion Utilisateurs</li>
+                <li>&bull; Statistiques</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 style="margin: 15px 0 8px;">15.3 Navigation Globale</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="background:white; border:1px solid var(--border); border-radius:8px; padding:12px;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:6px;">Navbar (sticky top)</div>
+            <div style="font-size:11px; color:var(--text-light); line-height:1.7;">
+                Logo MossAir + Accueil + Produit + Histoire + &Agrave; propos + Ic&ocirc;ne panier (badge) + Auth/Profil<br>
+                <strong>Couleur :</strong> #2d4a2b (gradient vert fonc&eacute;)<br>
+                <strong>Responsive :</strong> Hamburger &lt; 1400px
+            </div>
+        </div>
+        <div style="background:white; border:1px solid var(--border); border-radius:8px; padding:12px;">
+            <div style="font-weight:600; font-size:12px; margin-bottom:6px;">Footer (4 colonnes)</div>
+            <div style="font-size:11px; color:var(--text-light); line-height:1.7;">
+                Environ (mission) | Boutique (produits) | Ressources (histoire) | Support (CGV, cookies, conf.)<br>
+                <strong>Couleur :</strong> #1a1a1a (fond sombre)<br>
+                <strong>R&eacute;seaux :</strong> Facebook, Twitter, LinkedIn
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 15px;">
+        <p style="font-size: 12px;"><strong>Acc&egrave;s admin secret :</strong> Ctrl+A ou 3 clics sur le logo &rarr; modal mot de passe &rarr; redirection /admin</p>
+    </div>
+
+    <div class="page-footer">
+        <span>Page 42</span>
+        <span>MossAir &copy; 2025</span>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 43 : CONCLUSION FINALE                                    -->
 <!-- ============================================================ -->
 <div class="page">
     <div class="page-header">Conclusion Finale</div>
@@ -3179,17 +3517,17 @@ php bin/console doctrine:schema:validate</code></pre>
     </div>
 
     <div class="info-box" style="margin-top: 20px;">
-        <p style="font-size: 14px;"><strong>Bilan :</strong> Ce document de <strong>40 pages</strong> d&eacute;montre la ma&icirc;trise compl&egrave;te d'un projet e-commerce : de la conception (MCD, wireframes, personas) &agrave; l'impl&eacute;mentation (Entity, Controller, Templates) en passant par la s&eacute;curisation, le responsive design et les perspectives d'&eacute;volution. Le projet MossAir est fonctionnel, s&eacute;curis&eacute;, maintenable et &eacute;volutif.</p>
+        <p style="font-size: 14px;"><strong>Bilan :</strong> Ce document de <strong>43 pages</strong> d&eacute;montre la ma&icirc;trise compl&egrave;te d'un projet e-commerce : de la conception (MCD, wireframes, personas) &agrave; l'impl&eacute;mentation (Entity, Controller, Templates) en passant par la s&eacute;curisation, le responsive design et les perspectives d'&eacute;volution. Le projet MossAir est fonctionnel, s&eacute;curis&eacute;, maintenable et &eacute;volutif.</p>
     </div>
 
     <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); border-radius: 12px; color: white;">
         <h3 style="font-size: 22px; margin-bottom: 10px;">MossAir</h3>
         <p style="font-size: 14px; opacity: 0.9;">Cahier des Charges Technique Fusionn&eacute;</p>
-        <p style="font-size: 13px; opacity: 0.7; margin-top: 5px;">40 pages &mdash; Arnaud Barotteaux &mdash; 2025</p>
+        <p style="font-size: 13px; opacity: 0.7; margin-top: 5px;">43 pages &mdash; Arnaud Barotteaux &mdash; 2025</p>
     </div>
 
     <div class="page-footer">
-        <span>Page 40</span>
+        <span>Page 43</span>
         <span>MossAir &copy; 2025</span>
     </div>
 </div>
