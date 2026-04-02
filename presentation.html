@@ -467,14 +467,14 @@
  <div class="two-cols" style="margin-top: 15px;">
  <div>
  <table>
- <tr><th>Cat&eacute;gorie</th><th>Techno</th><th>Version</th></tr>
- <tr><td><strong>Backend</strong></td><td>PHP, Symfony</td><td>8.x, Symfony 6</td></tr>
- <tr><td><strong>ORM</strong></td><td>Doctrine</td><td>Derni&egrave;re version</td></tr>
- <tr><td><strong>BDD</strong></td><td>MySQL</td><td>8.x</td></tr>
- <tr><td><strong>Frontend</strong></td><td>HTML5, CSS3, JS</td><td>ES6+</td></tr>
- <tr><td><strong>CSS</strong></td><td>Bootstrap</td><td>5.x</td></tr>
- <tr><td><strong>Templating</strong></td><td>Twig</td><td>3.x</td></tr>
- <tr><td><strong>Versioning</strong></td><td>Git, GitHub</td><td>-</td></tr>
+ <tr><th>Cat&eacute;gorie</th><th>Techno</th></tr>
+ <tr><td><strong>Backend</strong></td><td>PHP, Symfony</td></tr>
+ <tr><td><strong>ORM</strong></td><td>Doctrine</td></tr>
+ <tr><td><strong>BDD</strong></td><td>MySQL</td></tr>
+ <tr><td><strong>Frontend</strong></td><td>HTML, CSS, JavaScript</td></tr>
+ <tr><td><strong>CSS</strong></td><td>Bootstrap</td></tr>
+ <tr><td><strong>Templating</strong></td><td>Twig</td></tr>
+ <tr><td><strong>Versioning</strong></td><td>Git, GitHub</td></tr>
  </table>
  </div>
  <div>
@@ -555,7 +555,10 @@
  <div class="mcd-field">email</div>
  <div class="mcd-field">password</div>
  <div class="mcd-field">role</div>
+ <div class="mcd-field"><span class="mcd-new">photo</span></div>
+ <div class="mcd-field"><span class="mcd-new">actif</span></div>
  <div class="mcd-field">created_at</div>
+ <div class="mcd-field"><span class="mcd-new">updatedAt</span></div>
  </div>
  <div class="mcd-table">
  <div class="mcd-title">PRODUIT</div>
@@ -565,17 +568,22 @@
  <div class="mcd-field">prix</div>
  <div class="mcd-field">image</div>
  <div class="mcd-field">actif</div>
- <div class="mcd-field"><span class="mcd-new">stock </span></div>
+ <div class="mcd-field"><span class="mcd-new">stock</span></div>
  <div class="mcd-field">created_at</div>
+ <div class="mcd-field"><span class="mcd-new">updatedAt</span></div>
  </div>
  <div class="mcd-table">
  <div class="mcd-title">COMMANDE</div>
  <div class="mcd-field"><span class="mcd-pk">id (PK)</span></div>
+ <div class="mcd-field"><span class="mcd-new">user_id (FK)</span></div>
  <div class="mcd-field">nom_client</div>
  <div class="mcd-field">produit</div>
  <div class="mcd-field">quantite</div>
  <div class="mcd-field">prix</div>
+ <div class="mcd-field"><span class="mcd-new">couleur</span></div>
+ <div class="mcd-field"><span class="mcd-new">image</span></div>
  <div class="mcd-field">date_commande</div>
+ <div class="mcd-field"><span class="mcd-new">updatedAt</span></div>
  </div>
  </div>
  </div>
@@ -606,7 +614,7 @@
  <div class="divider"></div>
  <div class="two-cols" style="margin-top: 10px;">
  <div>
- <p style="margin-bottom: 15px;">Utilisation de <span class="highlight">CSS3</span> et <span class="highlight">media queries</span> pour adapter le site &agrave; tous les &eacute;crans.</p>
+ <p style="margin-bottom: 15px;">Utilisation de <span class="highlight">CSS</span> et <span class="highlight">media queries</span> pour adapter le site &agrave; tous les &eacute;crans.</p>
  <div class="code-block">
 <span class="comment">/* Header desktop */</span>
 .<span class="var">header-section</span> {
@@ -673,23 +681,26 @@
  </div>
  </div>
  <div>
- <h3> Fonctionnalit&eacute;s JS cl&eacute;s</h3>
- <div class="card">
- <ul>
- <li><strong>Manipulation du DOM</strong> : s&eacute;lection, &eacute;v&eacute;nements, classList</li>
- <li><strong>IIFE</strong> : isolation du scope (pas de pollution globale)</li>
- <li><strong>Accessibilit&eacute;</strong> : attribut aria-expanded</li>
- <li><strong>ES6+</strong> : arrow functions, const/let, forEach</li>
- </ul>
+ <h3> Code : Menu Hamburger</h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="keyword">const</span> <span class="var">hamburger</span> = document.<span class="func">querySelector</span>(<span class="string">'.hamburger'</span>);
+<span class="keyword">const</span> <span class="var">navMenu</span> = document.<span class="func">querySelector</span>(<span class="string">'.list ul'</span>);
+
+<span class="var">hamburger</span>.<span class="func">addEventListener</span>(<span class="string">'click'</span>, () =&gt; {
+  <span class="var">navMenu</span>.classList.<span class="func">toggle</span>(<span class="string">'active'</span>);
+});
  </div>
- <h3 style="margin-top: 20px;"> R&ocirc;le du JavaScript</h3>
- <div class="card">
- <p>Le JS g&egrave;re l'<span class="highlight">interactivit&eacute; c&ocirc;t&eacute; client</span> :</p>
- <ul style="margin-top: 8px;">
- <li>Navigation responsive</li>
- <li>Interactions utilisateur (clics, raccourcis)</li>
- <li>Compl&eacute;ment au back-end Symfony</li>
- </ul>
+ <h3 style="margin-top: 15px;"> Code : Acc&egrave;s Admin (3 clics)</h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="keyword">let</span> <span class="var">clickCount</span> = <span class="string">0</span>;
+<span class="var">logo</span>.<span class="func">addEventListener</span>(<span class="string">'click'</span>, () =&gt; {
+  <span class="var">clickCount</span>++;
+  <span class="keyword">if</span> (<span class="var">clickCount</span> === <span class="string">3</span>) {
+    <span class="var">adminModal</span>.style.<span class="var">display</span> = <span class="string">'flex'</span>;
+    <span class="var">clickCount</span> = <span class="string">0</span>;
+  }
+  <span class="func">setTimeout</span>(() =&gt; <span class="var">clickCount</span> = <span class="string">0</span>, <span class="string">1000</span>);
+});
  </div>
  </div>
  </div>
@@ -719,24 +730,23 @@
  </div>
  </div>
  <div>
- <h3>Points cl&eacute;s du code</h3>
- <div class="card">
- <ul>
- <li><strong>Double v&eacute;rification</strong> du stock (ajout + validation)</li>
- <li><strong>Session PHP</strong> pour stocker le panier</li>
- <li><strong>decrementStock()</strong> &rarr; jamais n&eacute;gatif (<code style="background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px;">max(0, ...)</code>)</li>
- <li><strong>Transaction atomique</strong> avec flush()</li>
- <li>Rollback automatique en cas d'erreur</li>
- </ul>
+ <h3>Code : decrementStock() <small>(Entity/Produit.php)</small></h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="keyword">public function</span> <span class="func">decrementStock</span>(<span class="var">int $quantity</span>): <span class="var">static</span>
+{
+  <span class="comment">// Emp&ecirc;cher le stock de devenir n&eacute;gatif</span>
+  <span class="keyword">$this</span>-&gt;<span class="var">stock</span> = <span class="func">max</span>(<span class="string">0</span>, <span class="keyword">$this</span>-&gt;<span class="var">stock</span> - <span class="var">$quantity</span>);
+  <span class="keyword">return</span> <span class="keyword">$this</span>;
+}
  </div>
- <h3 style="margin-top: 15px;">Migration Doctrine</h3>
- <div class="card">
- <p>Ajout de la colonne <span class="highlight">stock</span> (INT, NOT NULL, DEFAULT 0) :</p>
- <div class="code-block" style="margin-top: 10px; font-size: 1.3em;">
-<span class="keyword">php</span> bin/console <span class="func">make:migration</span>
-<span class="keyword">php</span> bin/console <span class="func">doctrine:migrations:migrate</span>
-<span class="keyword">php</span> bin/console <span class="func">doctrine:schema:validate</span>
- </div>
+ <h3 style="margin-top: 12px;">Code : Appel dans PanierController</h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="comment">// Lors du paiement effectu&eacute;</span>
+<span class="keyword">foreach</span> (<span class="var">$panier</span> <span class="keyword">as</span> <span class="var">$item</span>) {
+  <span class="var">$produit</span> = <span class="var">$produitRepo</span>-&gt;<span class="func">find</span>(<span class="var">$item</span>[<span class="string">'id'</span>]);
+  <span class="var">$produit</span>-&gt;<span class="func">decrementStock</span>(<span class="var">$item</span>[<span class="string">'quantity'</span>]);
+}
+<span class="var">$em</span>-&gt;<span class="func">flush</span>(); <span class="comment">// Transaction atomique</span>
  </div>
  </div>
  </div>
@@ -753,7 +763,7 @@
  <ul>
  <li><strong>bcrypt</strong> &mdash; mots de passe hach&eacute;s</li>
  <li><strong>checkAdmin()</strong> &mdash; contr&ocirc;le d'acc&egrave;s serveur</li>
- <li>Validation <strong>HTML5 + PHP</strong></li>
+ <li>Validation <strong>HTML + PHP</strong></li>
  </ul>
  <h3 style="margin-top: 20px;"> Protection CSRF</h3>
  <ul>
@@ -762,17 +772,20 @@
  </ul>
  </div>
  <div>
- <h3> Protection XSS</h3>
- <ul>
- <li>&Eacute;chappement <strong>automatique</strong> des variables Twig</li>
- <li>Aucune injection HTML possible</li>
- </ul>
- <h3 style="margin-top: 20px;"> Int&eacute;grit&eacute; des donn&eacute;es</h3>
- <ul>
- <li><code style="background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px;">max(0, stock - qty)</code> &mdash; jamais n&eacute;gatif</li>
- <li>Double v&eacute;rification stock (ajout + validation)</li>
- <li>Transaction atomique avec <strong>flush()</strong></li>
- </ul>
+ <h3> Code : Hachage mot de passe</h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="comment">// AuthController.php - Inscription</span>
+<span class="var">$hashedPassword</span> = <span class="var">$passwordHasher</span>
+  -&gt;<span class="func">hashPassword</span>(<span class="var">$user</span>, <span class="var">$data</span>[<span class="string">'password'</span>]);
+<span class="var">$user</span>-&gt;<span class="func">setPassword</span>(<span class="var">$hashedPassword</span>);
+ </div>
+ <h3 style="margin-top: 12px;"> Code : Protection CSRF (Twig)</h3>
+ <div class="code-block" style="font-size: 1.1em;">
+<span class="comment">&lt;!-- Token CSRF auto dans les formulaires --&gt;</span>
+&lt;<span class="keyword">input</span> <span class="var">type</span>=<span class="string">"hidden"</span>
+  <span class="var">name</span>=<span class="string">"_csrf_token"</span>
+  <span class="var">value</span>=<span class="string">"{{ csrf_token('authenticate') }}"</span>&gt;
+ </div>
  </div>
  </div>
  </div>
@@ -786,7 +799,7 @@
  <div class="three-cols">
  <div style="text-align: center;">
   <h3 style="color: #fff;">Page d'Accueil</h3>
- <p style="font-size: 1.5em;">Hero section avec image purificateur, titre MossAir, bouton "D&eacute;couvrir", navigation compl&egrave;te</p>
+ <img src="screen-accueil.png" alt="Page d'Accueil MossAir" style="width: 100%; max-height: 28vh; object-fit: contain; border-radius: 8px; margin: 8px 0;">
  <div style="margin-top: 10px;">
  <span class="badge green">Desktop</span>
  <span class="badge blue">Mobile</span>
@@ -794,7 +807,7 @@
  </div>
  <div style="text-align: center;">
   <h3 style="color: #fff;">Panier &amp; Commande</h3>
- <p style="font-size: 1.5em;">Panier dynamique, modification quantit&eacute;, modal de confirmation, v&eacute;rification stock</p>
+ <img src="screen-mobile-panier.webp" alt="Panier MossAir Mobile" style="width: 60%; max-height: 28vh; object-fit: contain; border-radius: 8px; margin: 8px 0;">
  <div style="margin-top: 10px;">
  <span class="badge green">Ajout</span>
  <span class="badge orange">Validation</span>
@@ -811,15 +824,23 @@
  <div class="three-cols" style="margin-top: 15px;">
  <div style="text-align: center;">
   <h3 style="color: #fff;">Authentification</h3>
- <p style="font-size: 1.5em;">Connexion (pr&eacute;nom + mdp), Inscription (7 champs), Modal modification profil</p>
+ <img src="screen-connexion.png" alt="Page Connexion" style="width: 48%; max-height: 22vh; object-fit: contain; border-radius: 6px; margin: 4px;">
+ <img src="screen-inscription.png" alt="Page Inscription" style="width: 48%; max-height: 22vh; object-fit: contain; border-radius: 6px; margin: 4px;">
  </div>
  <div style="text-align: center;">
   <h3 style="color: #fff;">Fiche Produit</h3>
- <p style="font-size: 1.5em;">Image, prix, stock en temps r&eacute;el, caract&eacute;ristiques, bouton "Ajouter au panier"</p>
+ <img src="screen-produit.png" alt="Fiche Produit MossAir" style="width: 100%; max-height: 22vh; object-fit: contain; border-radius: 6px; margin: 4px 0;">
  </div>
  <div style="text-align: center;">
   <h3 style="color: #fff;">Version Mobile</h3>
- <p style="font-size: 1.5em;">Menu hamburger, layout adapt&eacute;, images responsive, navigation fluide</p>
+ <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;">
+ <img src="screen-mobile-accueil.webp" alt="Accueil Mobile" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="Accueil">
+ <img src="screen-mobile-burger.webp" alt="Menu Burger" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="Menu Burger">
+ <img src="screen-mobile-produits.webp" alt="Produits Mobile" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="Produits">
+ <img src="screen-mobile-connexion.webp" alt="Connexion Mobile" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="Connexion">
+ <img src="screen-mobile-inscription.webp" alt="Inscription Mobile" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="Inscription">
+ <img src="screen-mobile-apropos.webp" alt="A propos Mobile" style="width: 30%; max-height: 18vh; object-fit: contain; border-radius: 6px;" title="À propos">
+ </div>
  </div>
  </div>
  </div>
@@ -853,7 +874,7 @@
  </ul>
  <h3 style="margin-top: 20px;"> Acquis</h3>
  <ul>
- <li><strong>Symfony 6</strong> + Doctrine ORM</li>
+ <li><strong>Symfony</strong> + Doctrine ORM</li>
  <li>Gestion de projet <strong>A &agrave; Z</strong></li>
  <li>Bonnes pratiques <strong>s&eacute;curit&eacute; web</strong></li>
  </ul>
@@ -869,9 +890,9 @@
  <p style="font-size: 1.8em; opacity: 0.9;">Des questions ?</p>
  <div style="margin-top: 40px;">
  <span class="tag">MossAir</span>
- <span class="tag">Symfony 6</span>
+ <span class="tag">Symfony</span>
  <span class="tag">E-Commerce</span>
- <span class="tag">PHP 8</span>
+ <span class="tag">PHP</span>
  <span class="tag">MySQL</span>
  </div>
  <p style="margin-top: 50px; opacity: 0.5; font-size: 1.6em;">
